@@ -9,8 +9,9 @@
   },
   "scripts": {
     "dev": "parcel src/index.ts",
-    "build": "parcel src/index.ts",
+    "build": "parcel build src/index.ts",
     "start": "node dist/index.js",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "tsc": "tsc src/**/*.ts --target ES2016"
   }
 }
