@@ -1,21 +1,8 @@
-import readline from "readline";
-const { stdout, stdin } = process;
-
 class Menu {
-  constructor(store) {
+  constructor(recorder, store) {
+    this.recorder = recorder;
     this.store = store;
     this.store.subscribe(this.render);
-    this.input = stdin;
-    this.output = stdout;
-
-    this.recorder = readline.createInterface({
-      input: stdin,
-      output: stdout
-    });
-  }
-
-  clear() {
-    this.output.write("\u001b[2J\u001b[0;0H");
   }
 
   welcomeMessage = () => {
@@ -25,11 +12,13 @@ class Menu {
       console.log("========================");
       console.log("Welcome to Connect Four!");
       console.log("========================");
-      console.log("Player select: X or O");
+      console.log("Player Strategies: \n");
+      console.log("H for Human");
+      console.log("C for Computer");
 
       this.store.dispatch({
         type: "UPDATE_MENU",
-        payload: "in-game"
+        payload: "prompt"
       });
     }
   };
@@ -61,9 +50,7 @@ class Menu {
           type: "SET_PLAYER_TWO",
           payload: answer
         });
-
-        this.recorder.close();
-        this.clear();
+        // this.recorder.close()
       });
     }
   };
