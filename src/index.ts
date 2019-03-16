@@ -1,17 +1,4 @@
-import Store from './lib/Store'
-import { todosReducer } from './reducers/todos'
+import GamePlay from './views/gamePlay'
 
-const reducers = {
-    todos: todosReducer,
-};
-
-const store = new Store(reducers);
-
-store.dispatch({
-    type: 'ADD_TODO',
-    payload: { label: 'Eat pizza', complete: false },
-});
-
-store.subscribe(state => {
-    console.log(state.todos)
-});
+const game = new GamePlay()
+game.start()

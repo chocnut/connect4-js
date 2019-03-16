@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "devDependencies": {
-    "parcel": "^1.12.2",
+  "scripts": {
+    "tsc": "tsc",
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "prod": "tsc && node ./build/index.js",
+    "clean": "rm -rf build"
+  },
+  "dependencies": {
+    "ts-node-dev": "^1.0.0-pre.32",
     "typescript": "^3.3.3333"
   },
-  "scripts": {
-    "dev": "parcel src/index.ts",
-    "build": "parcel build src/index.ts",
-    "start": "node dist/index.js",
-    "clean": "rm -rf dist",
-    "tsc": "tsc src/**/*.ts --target ES2016"
+  "devDependencies": {
+    "@types/node": "^11.11.3"
   }
 }
