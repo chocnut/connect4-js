@@ -1,5 +1,5 @@
 export function createStore(reducer: (state: object, action: object) => object) {
-  let state: object;
+  let state: any;
   let listeners: Array<() => void> = [];
 
   const getState = () => state;
