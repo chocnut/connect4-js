@@ -1,5 +1,8 @@
 class Menu {
-  constructor(recorder, store) {
+  private recorder: any;
+  private store: any;
+
+  constructor(recorder: any, store: any) {
     this.recorder = recorder;
     this.store = store;
     this.store.subscribe(this.render);
@@ -33,7 +36,7 @@ class Menu {
   };
 
   humanQuestion = () => {
-    this.recorder.question("Select Player 1: ", answer => {
+    this.recorder.question("Select Player 1: ", (answer: string) => {
       this.store.dispatch({
         type: "SET_PLAYER_ONE",
         payload: answer
@@ -45,7 +48,7 @@ class Menu {
     const { game } = this.store.getState();
 
     if (game.playerOne.length > 0 && game.playerTwo.length === 0) {
-      this.recorder.question("Select Player 2: ", answer => {
+      this.recorder.question("Select Player 2: ", (answer:string) => {
         this.store.dispatch({
           type: "SET_PLAYER_TWO",
           payload: answer

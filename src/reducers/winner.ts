@@ -1,6 +1,6 @@
 import WinnerSelector from "../util/winnerSelector";
 
-const winnerSelector = (state, payload) => {
+const winnerSelector = (state: object, payload: object) => {
   const selector = new WinnerSelector(state, payload)
   let newState = selector.getState();
   return newState;

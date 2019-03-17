@@ -3,7 +3,13 @@ import { updateMenu, checkWinner, placeColumn } from "../actions";
 
 const { stdin, stdout } = process;
 class Board {
-  constructor(recorder, store) {
+  private recorder: any;
+  private store: any;
+  private dispatch: ({}) => void;
+  private watcher: any;
+  private columns: Array<number>;
+
+  constructor(recorder: any, store: any) {
     this.recorder = recorder;
     this.store = store;
     this.store.subscribe(this.render);
@@ -23,14 +29,15 @@ class Board {
     return playerOne === playerTwo;
   }
 
-  checkWinner = grid => {
+  checkWinner = (grid: Array<number>) => {
     clearTimeout(this.watcher);
     this.watcher = setTimeout(() => {
       this.dispatch(checkWinner({ grid }));
     }, 500);
+    this.displayGrid(grid);
   };
 
-  playerMove = (column, player) => {
+  playerMove = (column: string, player: string) => {
     this.dispatch(
       placeColumn({
         column,
@@ -39,14 +46,14 @@ class Board {
     );
   };
 
-  isValidMove(index) {
+  isValidMove(index: number) {
     return this.columns[index] !== undefined;
   }
 
   prompt = () => {
-    this.recorder.question("Valid moves are 0, 1, 2, 3, 4, 5, 6\nSelect your next move: ", answer => {
+    this.recorder.question("Valid moves are 0, 1, 2, 3, 4, 5, 6\nSelect your next move: ", (answer: string) => {
 
-      if (this.isValidMove(answer)) {
+      if (this.isValidMove(parseInt(answer))) {
         this.playerMove(answer, "H");
         this.makeAiMove();
       } else {
@@ -62,21 +69,21 @@ class Board {
     const computerColumn = this.columns[Math.floor(Math.random() * this.columns.length)];
 
     if (this.isAi()) {
-      this.playerMove(computerColumn, `C${turn}`);
+      this.playerMove(computerColumn.toString(), `C${turn}`);
     } else {
-      this.playerMove(computerColumn, "C");
+      this.playerMove(computerColumn.toString(), "C");
     }
 
   }
 
-  getWinningPlayer = player => {
+  getWinningPlayer = (player: string) => {
     const { game } = this.store.getState();
     const { playerOne, playerTwo } = game;
 
     return playerOne === player ? `Player 1 (${player})` : `Player 2 (${player})`;
   }
 
-  announceWinner(winner) {
+  announceWinner(winner: any) {
     console.log("====== GAME OVER ===========");
     console.log(`  Winner is ${this.getWinningPlayer(winner.player)}  `);
     console.log("============================");
@@ -92,9 +99,9 @@ class Board {
     }
   }
 
-  displayGrid(grid) {
+  displayGrid(grid: Array<number>) {
     console.table(grid);
-    console.table("\n\n");
+    console.table("\n");
   }
 
   render = () => {

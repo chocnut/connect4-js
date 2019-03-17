@@ -1,15 +1,15 @@
-export function createStore(reducer) {
-  let state;
-  let listeners = [];
+export function createStore(reducer: (state: object, action: object) => object) {
+  let state: object;
+  let listeners: Array<() => void> = [];
 
   const getState = () => state;
 
-  const dispatch = action => {
+  const dispatch = (action: object) => {
     state = reducer(state, action);
     listeners.forEach(listener => listener());
   };
 
-  const subscribe = listener => {
+  const subscribe = (listener: () => void) => {
     listeners.push(listener);
     return () => {
       listeners = listeners.filter(l => l !== listener);
@@ -21,9 +21,9 @@ export function createStore(reducer) {
   return { getState, dispatch, subscribe };
 }
 
-export const combineReducers = reducers => {
-  return (state = {}, action) => {
-    return Object.keys(reducers).reduce((nextState, key) => {
+export const combineReducers = (reducers: any) => {
+  return (state: any = {}, action: any) => {
+    return Object.keys(reducers).reduce((nextState: any, key: any) => {
       nextState[key] = reducers[key](state[key], action);
       return nextState;
     }, {});

@@ -1,5 +1,14 @@
+interface Payload {
+  grid: Array<number>
+}
 class WinnerSelector {
-  constructor(state, payload) {
+  private state: object;
+  private grid: any;
+  private cellValue: string;
+  private ROW: number;
+  private COLUMN: number;
+
+  constructor(state: object, payload: Payload) {
     this.state = state;
     this.grid = payload.grid;
     this.cellValue = "";
@@ -8,8 +17,8 @@ class WinnerSelector {
   }
 
   horizontalCheck() {
-    for (let i = 0; i < this.ROW; i++) {
-      for (let j = 0; j < this.COLUMN - 3; j++) {
+    for (let i: number = 0; i < this.ROW; i++) {
+      for (let j: number = 0; j < this.COLUMN - 3; j++) {
         this.cellValue = this.grid[i][j];
         if (
           this.cellValue !== "" &&
@@ -25,8 +34,8 @@ class WinnerSelector {
   }
 
   verticalCheck() {
-    for (let j = 0; j < this.COLUMN; j++) {
-      for (let i = 0; i < this.ROW - 3; i++) {
+    for (let j: number = 0; j < this.COLUMN; j++) {
+      for (let i: number = 0; i < this.ROW - 3; i++) {
         this.cellValue = this.grid[i][j];
         if (
           this.cellValue !== "" &&
@@ -42,8 +51,8 @@ class WinnerSelector {
   }
 
   ascendingDiagonalCheck() {
-    for (let i = 3; i < this.ROW; i++) {
-      for (let j = 0; j < this.COLUMN - 3; j++) {
+    for (let i: number = 3; i < this.ROW; i++) {
+      for (let j: number = 0; j < this.COLUMN - 3; j++) {
         this.cellValue = this.grid[i][j];
         if (
           this.cellValue !== "" &&
@@ -59,8 +68,8 @@ class WinnerSelector {
   }
 
   descendingDiagonalCheck() {
-    for (let i = 3; i < this.ROW; i++) {
-      for (let j = 3; j < this.COLUMN; j++) {
+    for (let i: number = 3; i < this.ROW; i++) {
+      for (let j: number = 3; j < this.COLUMN; j++) {
         this.cellValue = this.grid[i][j];
         if (
           this.cellValue !== this.cellValue &&
