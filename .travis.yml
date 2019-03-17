@@ -1,0 +1,9 @@
+language: node_js
+cache:
+  yarn: true
+node_js:
+- '11.11.0'
+script:
+- yarn test
+env:
+- NODE_ENV: feature/travis
