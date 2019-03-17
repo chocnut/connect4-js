@@ -37,7 +37,7 @@ class Board {
     this.displayGrid(grid);
   };
 
-  playerMove = (column: string, player: string) => {
+  playerMove = (column: number, player: string) => {
     this.dispatch(
       placeColumn({
         column,
@@ -54,7 +54,7 @@ class Board {
     this.recorder.question("Valid moves are 0, 1, 2, 3, 4, 5, 6\nSelect your next move: ", (answer: string) => {
 
       if (this.isValidMove(parseInt(answer))) {
-        this.playerMove(answer, "H");
+        this.playerMove(parseInt(answer), "H");
         this.makeAiMove();
       } else {
         console.log('Invalid column. Please select again.')
@@ -69,9 +69,9 @@ class Board {
     const computerColumn = this.columns[Math.floor(Math.random() * this.columns.length)];
 
     if (this.isAi()) {
-      this.playerMove(computerColumn.toString(), `C${turn}`);
+      this.playerMove(computerColumn, `C${turn}`);
     } else {
-      this.playerMove(computerColumn.toString(), "C");
+      this.playerMove(computerColumn, "C");
     }
 
   }

@@ -1,6 +1,10 @@
 import WinnerSelector from "../util/winnerSelector";
 
-const winnerSelector = (state: object, payload: object) => {
+interface Payload {
+  grid: Array<number>
+}
+
+const winnerSelector = (state: object, payload: Payload) => {
   const selector = new WinnerSelector(state, payload)
   let newState = selector.getState();
   return newState;
