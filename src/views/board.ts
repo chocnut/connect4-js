@@ -34,7 +34,6 @@ class Board {
     this.watcher = setTimeout(() => {
       this.dispatch(checkWinner({ grid }));
     }, 500);
-    this.displayGrid(grid);
   };
 
   playerMove = (column: number, player: string) => {
