@@ -1,7 +1,7 @@
 Connect4 - JavaScript/TypeScript
 
 ## Requirement
-- NodeJS - 11.x.x
+- NodeJS
 
 ## Usage
 ```sh
