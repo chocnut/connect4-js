@@ -46,12 +46,14 @@ export function game(
           [secondArrayIndex]: value
         })
       })
+      
       return {
         ...state,
         grid: newGrid,
         freeCells: [...state.freeCells, state.freeCells[column]--],
-        turn: state.turn === 1 ? 2 : 1
+        turn: state.turn === 1 ? 2 : 1,
       }
+
     }
     default: {
       return state;

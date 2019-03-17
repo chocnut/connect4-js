@@ -9,6 +9,7 @@ class Board {
     this.store.subscribe(this.render);
     this.dispatch = store.dispatch;
     this.watcher = null;
+    this.columns = [0, 1, 2, 3, 4, 5, 6];
   }
 
   clear() {
@@ -38,10 +39,19 @@ class Board {
     );
   };
 
+  isValidMove(index) {
+    return this.columns[index] !== undefined;
+  }
+
   prompt = () => {
     this.recorder.question("Valid moves are 0, 1, 2, 3, 4, 5, 6\nSelect your next move: ", answer => {
-      this.playerMove(answer, "H");
-      this.makeAiMove();
+
+      if (this.isValidMove(answer)) {
+        this.playerMove(answer, "H");
+        this.makeAiMove();
+      } else {
+        console.log('Invalid column. Please select again.')
+      }
     });
   };
 
@@ -49,8 +59,7 @@ class Board {
     const { game } = this.store.getState();
     const { turn } = game;
 
-    const cols = [0, 1, 2, 3, 4, 5, 6];
-    const computerColumn = cols[Math.floor(Math.random() * cols.length)];
+    const computerColumn = this.columns[Math.floor(Math.random() * this.columns.length)];
 
     if (this.isAi()) {
       this.playerMove(computerColumn, `C${turn}`);
@@ -85,11 +94,12 @@ class Board {
 
   displayGrid(grid) {
     console.table(grid);
+    console.table("\n\n");
   }
 
   render = () => {
     const { game, winner } = this.store.getState();
-    const { current, grid, turn, playerOne, playerTwo } = game;
+    const { current, grid } = game;
 
     if (current === "inGame") {
       this.clear();
