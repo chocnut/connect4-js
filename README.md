@@ -1,4 +1,4 @@
-Connect4 - Typescript
+Connect4 - JavaScript/TypeScript
 
 ## Requirement
 - NodeJS - 11.x.x
