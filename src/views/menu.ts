@@ -15,7 +15,7 @@ class Menu {
       console.log("========================");
       console.log("Welcome to Connect Four!");
       console.log("========================");
-      console.log("Player Strategies: \n");
+      console.log("Select player strategies: \n");
       console.log("H for Human");
       console.log("C for Computer");
 
