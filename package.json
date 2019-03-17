@@ -6,7 +6,7 @@
   "scripts": {
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
-    "prod": "tsc && node ./build/index.js",
+    "build": "tsc && node ./dist/index.js",
     "clean": "rm -rf build"
   },
   "dependencies": {
