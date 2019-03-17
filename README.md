@@ -1,6 +1,6 @@
 ## Connect4 - JavaScript/TypeScript [![Build Status](https://travis-ci.org/chocnut/connect4-js.svg?branch=master)](https://travis-ci.org/chocnut/connect4-js)
 
-## Requirement
+## Requirements
 - NodeJS
 
 ## Usage
@@ -10,7 +10,7 @@ $ yarn
 $ yarn build
 ```
 
-## Dev mode
+## Development mode
 ```sh
 $ yarn dev
 ```
