@@ -7,8 +7,10 @@
     "tsc": "tsc",
     "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
     "build": "tsc && node ./build/index.js",
+    "build-ci": "tsc",
     "clean": "rm -rf build",
-    "test": "jest"
+    "test": "jest",
+    "test-ci": "jest build"
   },
   "dependencies": {
     "ts-node-dev": "^1.0.0-pre.32",
