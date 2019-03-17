@@ -4,6 +4,6 @@ cache:
 node_js:
 - '11.11.0'
 script:
-- yarn test
+- npm test
 env:
 - NODE_ENV: feature/travis
