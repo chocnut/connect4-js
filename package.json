@@ -10,7 +10,7 @@
     "build-ci": "tsc",
     "clean": "rm -rf build",
     "test": "jest",
-    "test-ci": "jest build"
+    "test-ci": "jest build/__tests__/*.js"
   },
   "dependencies": {
     "ts-node-dev": "^1.0.0-pre.32",
