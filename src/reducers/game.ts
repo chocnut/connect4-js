@@ -37,7 +37,7 @@ export function game(
       };
     }
     case "PLACE_COLUMN": {
-      const { column, value} = action.payload
+      const { column, value, turn } = action.payload
 
       const firstArrayIndex = state.freeCells[column] - 1;
       const secondArrayIndex = column;
@@ -49,7 +49,8 @@ export function game(
       return {
         ...state,
         grid: newGrid,
-        freeCells: [...state.freeCells, state.freeCells[column]--]
+        freeCells: [...state.freeCells, state.freeCells[column]--],
+        turn: state.turn === 1 ? 2 : 1
       }
     }
     default: {

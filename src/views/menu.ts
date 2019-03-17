@@ -33,7 +33,7 @@ class Menu {
   };
 
   humanQuestion = () => {
-    this.recorder.question("Player 1 (default Human): ", answer => {
+    this.recorder.question("Select Player 1: ", answer => {
       this.store.dispatch({
         type: "SET_PLAYER_ONE",
         payload: answer
@@ -45,7 +45,7 @@ class Menu {
     const { game } = this.store.getState();
 
     if (game.playerOne.length > 0 && game.playerTwo.length === 0) {
-      this.recorder.question("Player 2 (default Computer): ", answer => {
+      this.recorder.question("Select Player 2: ", answer => {
         this.store.dispatch({
           type: "SET_PLAYER_TWO",
           payload: answer
