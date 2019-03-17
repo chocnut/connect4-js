@@ -50,7 +50,6 @@ class Menu {
           type: "SET_PLAYER_TWO",
           payload: answer
         });
-        // this.recorder.close()
       });
     }
   };
